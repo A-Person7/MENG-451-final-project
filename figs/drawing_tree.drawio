@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0" version="29.1.1">
+  <diagram name="Page-1" id="QTwj-kBz31D33PRyCakK">
+    <mxGraphModel dx="966" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=none;strokeWidth=0;" value="Engineering Drawing Tree" vertex="1">
+          <mxGeometry height="30" width="170" x="330" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-16" edge="1" parent="1" source="ZejrxSO1OmvVSyH33MUQ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="440" />
+              <mxPoint x="520" y="390" />
+              <mxPoint x="415" y="390" />
+            </Array>
+            <mxPoint x="415" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=default;" value="Code" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-12" edge="1" parent="1" source="ZejrxSO1OmvVSyH33MUQ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;strokeColor=default;strokeWidth=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="440" />
+              <mxPoint x="160" y="390" />
+              <mxPoint x="415" y="390" />
+            </Array>
+            <mxPoint x="415" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=default;" value="Wiring Schematic" vertex="1">
+          <mxGeometry height="60" width="120" x="180" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-14" edge="1" parent="1" source="ZejrxSO1OmvVSyH33MUQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;curved=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415.0344827586207" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-11" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="CAD Assy" vertex="1">
+          <mxGeometry height="60" width="120" x="355" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-20" edge="1" parent="1" source="ZejrxSO1OmvVSyH33MUQ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="ZejrxSO1OmvVSyH33MUQ-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="415" y="530" />
+            </Array>
+            <mxPoint x="460" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-17" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.layered_rect;dx=10;outlineConnect=0;whiteSpace=wrap;" value="3D Printed Parts" vertex="1">
+          <mxGeometry height="60" width="100" x="440" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-18" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.layered_rect;dx=10;outlineConnect=0;whiteSpace=wrap;" value="COTS Parts" vertex="1">
+          <mxGeometry height="60" width="100" x="440" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-19" edge="1" parent="1" source="ZejrxSO1OmvVSyH33MUQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=25;entryPerimeter=0;endArrow=none;endFill=0;" target="ZejrxSO1OmvVSyH33MUQ-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZejrxSO1OmvVSyH33MUQ-22" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Balancer Assy" vertex="1">
+          <mxGeometry height="60" width="120" x="355" y="320" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
