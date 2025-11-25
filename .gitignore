@@ -1,0 +1,10 @@
+latex_cache
+*.pdf
+!figures/*.pdf
+*.log
+*.aux
+*.gz
+*.asv
+*.out
+*.drawio.bkp
+*.orig
