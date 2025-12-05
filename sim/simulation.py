@@ -78,8 +78,8 @@ length_CG = length/2 # [m]
 # The mass of the pendulum
 mass = 25e-3 # [kg]
 
-# The radius of the motor
-radius = 12.5e-3 # [m]
+# The radius of the motor section
+radius = 12.5e-2 # [m]
 
 # Mass moment of inertia of thin rod about its end. Assume our pendulum
 # can be approximated by a rod.
@@ -179,41 +179,44 @@ def get_thetas(
     Provides (dtheta, ddtheta) value for a given (observed)
     system state.
     """
-    phi = y[0]
-    dphi = y[1]
-    theta = y[2]
+    # phi = y[0]
+    # dphi = y[1]
+    # theta = y[2]
 
-    k_p = 0.2
-    k_v = 0.1
+    # k_p = 0.2
+    # k_v = 0.1
 
-    # return (phi * k_p + dphi * k_v, 0)
+    # # return (phi * k_p + dphi * k_v, 0)
 
-    k = 5.00
+    # k = 5.00
 
-    return (-k * (-phi + theta), 0)
+    # return (-k * (-phi + theta), 0)
 
-    # omega_n = np.sqrt(grav/length)
+    # Assuming theta is centered around pi/2 (or -pi/2), use
+    # approach discussed in _The Simulation and Analysis of a Single
+    # and Double Inverted Pendlum with a Vertically-Driven Pivot_
+    # by Gustavo Lee
+
+    # TODO -- get better estimate for different I values than
+    # simple pendulum (i.e. generalize for different mass distributions)
+    omega_n = np.sqrt(grav/length)
     # omega = 35 * omega_n
-    # # omega = 10000
-    # amp = np.pi / 32
-    # # amp = ((0.450 + 1.799/omega**2) + (np.sqrt(2)/omega))/2
-    # # omega = 10
-    # theta = amp * np.sin(omega * t)
-    # dtheta = omega * amp * np.cos(100 * t)
-    # ddtheta = omega**2 * amp * -np.sin(100 * t)
+    omega = 40 * omega_n
 
-    # return (dtheta, ddtheta)
 
-    # f_0 = 1/(2*np.pi) * np.sqrt(grav/length)
-    # omega = 40 * f_0
-    # # omega = 10000
-    # amp = np.pi / 32
-    # amp = ((0.450 + 1.799/omega**2) + (np.sqrt(2)/omega))/2
-    # # omega = 10
-    # theta = amp * np.sin(omega * t)
-    # dtheta = omega * amp * np.cos(100 * t)
-    # ddtheta = omega**2 * amp * -np.sin(100 * t)
-    # return (theta, dtheta, ddtheta)
+    # Translational amplitude
+    amp = ((0.450 + 1.799/omega**2) + (np.sqrt(2)/omega))/2
+    # Convert translational amplitude to angular amplitude
+    amp = amp / radius
+    # Magic correction factor
+    amp = amp / 20
+
+    # theta = np.pi/2 + amp * np.sin(omega * t)
+    dtheta = omega * amp * np.cos(omega * t)
+    ddtheta = omega**2 * amp * -np.sin(omega* t)
+
+    return (dtheta, ddtheta)
+
 
 def simulate() -> None:
     """Simulates the EOM"""
@@ -222,7 +225,7 @@ def simulate() -> None:
     # Let y = [phi, dphi, theta]
 
     # Initial conditions
-    y_0 = np.array([0.1, 0, 0]) # [rad, rad/s, rad]
+    y_0 = np.array([0.1, 0, np.pi/2]) # [rad, rad/s, rad]
 
     t_0 = 0 # [s]
     # No rest for the wicked.
@@ -261,7 +264,8 @@ def simulate() -> None:
     plt.ylim(-radius-length, radius+length)
     ax.set_aspect("equal", adjustable="box")
 
-    plt.title("Plot")
+    plt.xlabel("$x$ [m]")
+    plt.ylabel("$y$ [m]")
 
 
     def redraw(t: float, y_state: np.ndarray[float]) -> None:
@@ -297,9 +301,7 @@ def simulate() -> None:
         if status is not None:
             raise RuntimeError(f"Integration failed. {status}")
         redraw(ode.t, ode.y)
-    # plt.plot(sln.t, sln.y[0,:])
 
-    # plt.show()
 
 def main() -> None:
     """Simulates the dynamic system"""
