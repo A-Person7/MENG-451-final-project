@@ -181,11 +181,29 @@ def get_thetas(
     """
     phi = y[0]
     dphi = y[1]
+    theta = y[2]
 
-    k_p = 0.1
-    k_e = 0.5
+    k_p = 0.2
+    k_v = 0.1
 
-    return (dphi * k_e, 0)
+    # return (phi * k_p + dphi * k_v, 0)
+
+    k = 5.00
+
+    return (-k * (-phi + theta), 0)
+
+    # omega_n = np.sqrt(grav/length)
+    # omega = 35 * omega_n
+    # # omega = 10000
+    # amp = np.pi / 32
+    # # amp = ((0.450 + 1.799/omega**2) + (np.sqrt(2)/omega))/2
+    # # omega = 10
+    # theta = amp * np.sin(omega * t)
+    # dtheta = omega * amp * np.cos(100 * t)
+    # ddtheta = omega**2 * amp * -np.sin(100 * t)
+
+    # return (dtheta, ddtheta)
+
     # f_0 = 1/(2*np.pi) * np.sqrt(grav/length)
     # omega = 40 * f_0
     # # omega = 10000
