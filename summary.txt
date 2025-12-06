@@ -1,0 +1,46 @@
+Quick note:
+    You can run the simulation (primary deliverable) for this project by cloning 
+    https://github.com/A-Person7/MENG-451-final-project
+    and running
+    $ cd sim
+    $ pip install -r requirements.txt # If you need to, may want to setup a venv first if your system is externally managed
+    $ python3 simulation.py
+
+
+For this approach, I first tried to construct and validate the equations of motion. The easiest way
+I could think of to do this was to use the Lagrangian with q = [theta, phi], and only look at the
+phi term of the Lagrangian to avoid directly specifying dynamics and external force applied on the
+directly controlled element.
+
+Once I had this setup, my next order of business was to validate this with a realtime graph.
+Originally, I used scipy.integrate.solve_ivp to numerically integrate the system, but I swapped to a
+direct scipy.integrate.RK45 object to guarantee that each timestep was a later time than the previous
+iteration and to avoid janky plot calls within a derivative calculation.
+
+Once I was convinced the system behaved physically accurate for a fixed theta value, I incorporated
+a controlling function that returns the first and second time derivatives of theta. Initially, it
+returned theta, theta_dot, and theta double dot, but since these are dependent on each other and motor
+control is typically specified via speed, I opted to set the speed of the system (and provide
+acceleration based on how the speed profile was controlled).
+
+This leads to the actual part of stabilizing the system. If the radius of the directly controlled
+element is large enough, motion about its end is roughly linear, which is convenient. I tried
+a simple proportional controller based on the value of phi, of (phi + theta), and of phi dot, but
+wasn't satisfied with this approach. I opted to use a method I saw discussed in The Simulation and 
+Analysis of a Single and Double Inverted Pendlum with a Vertically-Driven Pivot by Gustavo Lee
+<https://nldlab.gatech.edu/w/images/f/fb/LeeGustavo_Inverted_Pendulum_Final_Report_.pdf>,
+where the system vertically oscillates with a frequency based on the pendulum's natural frequency
+and is able to maintain verticality.
+
+My initial suspicion before research was that I'd have the best luck trying to stabilize my system
+around theta = 0 (vertically down) or, failing that, theta = pi (vertically upright), but it turns
+out that theta = pi/2 (horizontal) showed the best results as I could implement this vertical
+oscillator and keep the pendulum upright.
+
+I did not get to physically implement this system (and looking at some of the required speeds for
+the system, that's likely for the best), but the simulation provides enough information to use best
+practices and spec out appropriate components (rather than guessing if the parts you happen to have
+on hand will work and wasting your time that way).
+
+Calculations done are implemented within the code, and should be mostly self-explanatory/well
+commented.

@@ -8,31 +8,47 @@ This project is provided *as-is*, with no warranties whatsoever, no guarantees, 
 The aim of this project is to balance an inherently unstable system with motion adjustments provided by an external source. Specifically, a DC motor is used to provide motion adjustments to balance an inverted pendulum.
 
 
-#### TODO
-- Validate dynamics
-- Complete designs needed for full engineering drawing tree 
-- Include build commands here
-- Test more
-- Documentation?
-
 #### Project Layout
 ```
 .
 ├── cad
 ├── figs
+│   ├── drawing_tree.drawio
+│   ├── drawing_tree.drawio.png
+│   ├── example_simulation.png
+│   └── qr_code_to_repo.png
 ├── poster
+│   ├── poster_here.pdf
+│   ├── poster.kra
+│   ├── poster.kra~
+│   ├── poster.pdf
+│   ├── poster.png
+│   ├── poster.png.kra
+│   └── poster.tex
 ├── README.md
 ├── schem
-└── src
+├── sim
+│   ├── requirements.txt
+│   └── simulation.py
+├── sketch
+│   └── sketch.ino
+└── summary.txt
 
-6 directories
+7 directories, 16 files
 ```
 
-#### Building
+#### Quickstart
 
-##### Wiring
-Wire per (forthcoming) schematics.
-##### Assembly
-Assemble per solid assembly model.
-##### Programming
-Requires Arduino IDE to be installed on your machine.
+```bash 
+git clone https://github.com/A-Person7/MENG-451-final-project
+cd sim
+pip3 install -r requirements.txt # If you need to, may want to setup a venv first if your system is externally managed
+python3 simulation.py
+```
+
+#### Poster
+To compile the poster to a PDF/similar with `latexmk` installed, 
+```bash
+cd poster
+latexmk -pvc -xelatex poster.tex
+```

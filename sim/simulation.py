@@ -20,11 +20,11 @@
         preferred GUI IDE.
 
         1. Set the script to executable. You only need to run this once.
-            $ chmod +x work.py 
+            $ chmod +x simulation.py 
           Then, simply execute the script 
-            $ ./work.py 
+            $ ./simulation.py 
         2. Ensure python3 is in your PATH 
-            $ python3 work.py 
+            $ python3 simulation.py 
         3. Refer to the guides and manuals provided by your prefered GUI
            IDE.
 
@@ -36,7 +36,7 @@
         See requirements.txt
 """
 
-__all__ = ["get_eom", "simulate"]
+__all__ = ["get_eom", "simulate", "get_thetas"]
 
 from typing import Tuple
 from collections.abc import Callable
@@ -70,7 +70,6 @@ plt.ion()
 sympy.init_printing(use_unicode=True)
 
 # --- System parameters ---
-
 # The length of the pendulum
 length = 50e-3 # [m]
 # The length of the pendulum to the center of gravity
@@ -231,9 +230,6 @@ def simulate() -> None:
     # No rest for the wicked.
     t_f = float("inf") # [s]
 
-    # Bad practice
-    t_old = t_0 # [s]
-
     def get_pos(
         y_state: np.ndarray[float]
     ) -> Tuple[np.ndarray[float], np.ndarray[float]]:
@@ -258,11 +254,10 @@ def simulate() -> None:
 
     fig, ax = plt.subplots(figsize=(8,8))
 
-    phi_0 = y_0[0]
     line = ax.plot(*get_pos(y_0), "-")[0]
+    ax.set_aspect("equal", adjustable="box")
     plt.xlim(-radius-length, radius+length)
     plt.ylim(-radius-length, radius+length)
-    ax.set_aspect("equal", adjustable="box")
 
     plt.xlabel("$x$ [m]")
     plt.ylabel("$y$ [m]")
